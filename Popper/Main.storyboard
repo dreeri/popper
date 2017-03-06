@@ -169,20 +169,17 @@
                         <viewControllerLayoutGuide type="bottom" id="rKG-mO-GCI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MSI-j1-PkK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rLV-Af-utl">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xm-aj-7hO">
-                                <rect key="frame" x="32" y="554" width="311" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="AnN-l7-CsF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="72"/>
                                 <state key="normal" title="Pop">
                                     <color key="titleColor" red="1" green="0.43529411759999997" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -190,11 +187,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93333333333333335" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="2Xm-aj-7hO" secondAttribute="trailing" constant="32" id="E4f-KS-1At"/>
-                            <constraint firstItem="rKG-mO-GCI" firstAttribute="top" secondItem="2Xm-aj-7hO" secondAttribute="bottom" constant="32" id="hZU-ih-8Lz"/>
-                            <constraint firstItem="2Xm-aj-7hO" firstAttribute="leading" secondItem="MSI-j1-PkK" secondAttribute="leading" constant="32" id="jcW-kx-Frf"/>
+                            <constraint firstItem="2Xm-aj-7hO" firstAttribute="centerY" secondItem="MSI-j1-PkK" secondAttribute="centerY" id="5k4-dT-Sk1"/>
+                            <constraint firstItem="2Xm-aj-7hO" firstAttribute="centerX" secondItem="MSI-j1-PkK" secondAttribute="centerX" id="f8Y-SO-raW"/>
+                            <constraint firstItem="2Xm-aj-7hO" firstAttribute="width" secondItem="MSI-j1-PkK" secondAttribute="width" id="wNQ-Qj-pZI"/>
+                            <constraint firstItem="2Xm-aj-7hO" firstAttribute="height" secondItem="MSI-j1-PkK" secondAttribute="height" id="xXh-fY-IAA"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="tF0-8K-t6x"/>
                     <connections>
                         <outlet property="animationView" destination="rLV-Af-utl" id="eE3-rA-LUv"/>
@@ -203,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVF-r6-z9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7" y="473"/>
+            <point key="canvasLocation" x="-7.2000000000000002" y="472.71364317841085"/>
         </scene>
         <!--Item-->
         <scene sceneID="NPA-8p-s5n">
@@ -280,6 +279,7 @@
         <scene sceneID="Ble-8Y-Rlb">
             <objects>
                 <tabBarController id="9tU-s8-NAt" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="38c-Nk-3ro">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

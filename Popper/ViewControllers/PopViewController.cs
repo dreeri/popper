@@ -10,8 +10,17 @@ namespace Popper
 {
     public partial class PopViewController : UIViewController
     {
+        enum BoxLocation
+        {
+            NorthEast,
+            SouthEast,
+            SouthWest,
+            NorthWest
+        }
+
         float SizeX;
         float SizeY;
+        BoxLocation Location;
 
         public PopViewController(IntPtr handle) : base(handle)
         {
@@ -36,18 +45,49 @@ namespace Popper
             SizeY = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
         }
 
+        CGPoint CalculateBoxLocation()
+        {
+            var screenWidth = UIScreen.MainScreen.Bounds.Width;
+            var screenHeight = UIScreen.MainScreen.Bounds.Height;
+
+            var halfWidth = SizeX / 2;
+            var halfHeight = SizeY / 2;
+            var tabBarHeight = TabBarController?.TabBar.Bounds.Size.Height ?? 59f;
+            switch (Location)
+            {
+                case BoxLocation.NorthEast:
+                    return new CGPoint(screenWidth - halfWidth, halfHeight);
+                case BoxLocation.SouthEast:
+                    return new CGPoint(screenWidth - halfWidth, screenHeight - halfHeight - tabBarHeight);
+                case BoxLocation.SouthWest:
+                    return new CGPoint(halfWidth, screenHeight - halfHeight - tabBarHeight);
+                case BoxLocation.NorthWest:
+                    return new CGPoint(halfWidth, halfHeight);
+                default:
+                    return new CGPoint(0, 0);
+            }
+        }
+
         void BoxAnimation()
         {
-            var animation = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerBounds);
-            animation.ToValue = NSValue.FromCGRect(new CGRect(0, 0, SizeX, SizeY));
-            animationView.Layer.AddAnimation(animation, "size");
-            View.SetNeedsLayout();
+            var animationSize = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerBounds);
+            var size = new CGSize(SizeX, SizeY);
+            animationSize.ToValue = NSValue.FromCGRect(new CGRect(new CGPoint(0, 0), size));
+            animationView.Layer.AddAnimation(animationSize, "size");
+
+            var animation = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPosition);
+            var location = CalculateBoxLocation();
+            animation.ToValue = NSValue.FromCGRect(new CGRect(location, new CGSize(0, 0)));
+            animationView.Layer.AddAnimation(animation, "location");
         }
 
         void InitButtons()
         {
             button1.TouchUpInside += (object sender, EventArgs e) =>
             {
+                var boxLocationLength = Enum.GetNames(typeof(BoxLocation)).Length - 1;
+                var index = (int)Location < boxLocationLength ? 1 : -(boxLocationLength);
+                Location = (BoxLocation)((int)Location + index);
                 BoxAnimation();
             };
         }
