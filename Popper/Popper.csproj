@@ -91,6 +91,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Facebook.Pop">
+      <HintPath>..\Components\Facebook.Pop-1.0.9\lib\ios-unified\Facebook.Pop.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -137,6 +140,20 @@
     <Compile Include="ViewControllers\OriginViewController.designer.cs">
       <DependentUpon>OriginViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\PopViewController.cs" />
+    <Compile Include="ViewControllers\PopViewController.designer.cs">
+      <DependentUpon>PopViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\OptionsViewController.cs" />
+    <Compile Include="ViewControllers\OptionsViewController.designer.cs">
+      <DependentUpon>OptionsViewController.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="Facebook.Pop">
+      <Version>1.0.9</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
