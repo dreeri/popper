@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popper", "Popper\Popper.csproj", "{8F04901D-0B49-4613-BD1C-A1F98ADC963F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F04901D-0B49-4613-BD1C-A1F98ADC963F}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{8F04901D-0B49-4613-BD1C-A1F98ADC963F}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{8F04901D-0B49-4613-BD1C-A1F98ADC963F}.Release|iPhone.ActiveCfg = Release|iPhone
+		{8F04901D-0B49-4613-BD1C-A1F98ADC963F}.Release|iPhone.Build.0 = Release|iPhone
+		{8F04901D-0B49-4613-BD1C-A1F98ADC963F}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{8F04901D-0B49-4613-BD1C-A1F98ADC963F}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{8F04901D-0B49-4613-BD1C-A1F98ADC963F}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{8F04901D-0B49-4613-BD1C-A1F98ADC963F}.Debug|iPhone.Build.0 = Debug|iPhone
+	EndGlobalSection
+EndGlobal
