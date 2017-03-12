@@ -13,6 +13,21 @@ namespace Popper
 	partial class OptionsViewController
 	{
 		[Outlet]
+		UIKit.UILabel label1 { get; set; }
+
+		[Outlet]
+		UIKit.UILabel label2 { get; set; }
+
+		[Outlet]
+		UIKit.UILabel label3 { get; set; }
+
+		[Outlet]
+		UIKit.UILabel label4 { get; set; }
+
+		[Outlet]
+		UIKit.UILabel label5 { get; set; }
+
+		[Outlet]
 		UIKit.UISlider slider1 { get; set; }
 
 		[Outlet]
@@ -52,6 +67,31 @@ namespace Popper
 			if (slider5 != null) {
 				slider5.Dispose ();
 				slider5 = null;
+			}
+
+			if (label1 != null) {
+				label1.Dispose ();
+				label1 = null;
+			}
+
+			if (label2 != null) {
+				label2.Dispose ();
+				label2 = null;
+			}
+
+			if (label3 != null) {
+				label3.Dispose ();
+				label3 = null;
+			}
+
+			if (label4 != null) {
+				label4.Dispose ();
+				label4 = null;
+			}
+
+			if (label5 != null) {
+				label5.Dispose ();
+				label5 = null;
 			}
 		}
 	}

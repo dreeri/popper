@@ -110,7 +110,7 @@ namespace Popper
         void BoxSizeAnimation()
         {
             var animationSize = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerBounds);
-            var multiplier = 0.8;
+            var multiplier = 0.7;
 
             var size = new CGSize(SizeX * multiplier, SizeY * multiplier);
             animationSize.ToValue = NSValue.FromCGRect(new CGRect(new CGPoint(0, 0), size));
