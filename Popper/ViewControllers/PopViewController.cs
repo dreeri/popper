@@ -70,19 +70,20 @@ namespace Popper
             var screenWidth = UIScreen.MainScreen.Bounds.Width;
             var screenHeight = UIScreen.MainScreen.Bounds.Height;
 
+            var statusBarHeight = 20f;
             var halfWidth = SizeX / 2;
             var halfHeight = SizeY / 2;
             var tabBarHeight = TabBarController?.TabBar.Bounds.Size.Height ?? 59f;
             switch (Location)
             {
                 case BoxLocation.NorthEast:
-                    return new CGPoint(screenWidth - halfWidth, halfHeight);
+                    return new CGPoint(screenWidth - halfWidth, halfHeight + statusBarHeight);
                 case BoxLocation.SouthEast:
                     return new CGPoint(screenWidth - halfWidth, screenHeight - halfHeight - tabBarHeight);
                 case BoxLocation.SouthWest:
                     return new CGPoint(halfWidth, screenHeight - halfHeight - tabBarHeight);
                 case BoxLocation.NorthWest:
-                    return new CGPoint(halfWidth, halfHeight);
+                    return new CGPoint(halfWidth, halfHeight + statusBarHeight);
                 default:
                     return new CGPoint(0, 0);
             }
@@ -138,7 +139,8 @@ namespace Popper
 
         void InitBox()
         {
-            animationView.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width - Constants.DefaultBoxEdge, 0, SizeX, SizeY);
+            var statusBarHeight = 20;
+            animationView.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width - Constants.DefaultBoxEdge, statusBarHeight, SizeX, SizeY);
         }
     }
 }
