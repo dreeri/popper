@@ -4,6 +4,7 @@ using System;
 using CoreGraphics;
 using Facebook.Pop;
 using Foundation;
+using Popper.Utilities;
 using UIKit;
 
 namespace Popper
@@ -20,9 +21,9 @@ namespace Popper
 
         float SizeX;
         float SizeY;
-        float DynamicMass;
-        float DynamicTension;
-        float DynamicFriction;
+        float DynamicsMass;
+        float DynamicsTension;
+        float DynamicsFriction;
 
         BoxLocation Location;
 
@@ -34,12 +35,13 @@ namespace Popper
         {
             base.ViewDidLoad();
             InitButtons();
+            GetUserDefaults();
+            InitBox();
         }
 
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-
             GetUserDefaults();
         }
 
@@ -47,17 +49,20 @@ namespace Popper
         {
             SizeX = NSUserDefaults.StandardUserDefaults.FloatForKey("slider1");
             SizeY = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
-            DynamicMass = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
-            DynamicTension = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
-            DynamicFriction = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
+            DynamicsMass = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
+            DynamicsTension = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
+            DynamicsFriction = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
 
             var minimumSize = 60f;
             SizeX = SizeX < minimumSize ? minimumSize : SizeX;
             SizeY = SizeY < minimumSize ? minimumSize : SizeY;
             var minimumDynamicValue = 1f;
-            DynamicMass = DynamicMass < minimumDynamicValue ? minimumDynamicValue : DynamicMass;
-            DynamicTension = DynamicTension < minimumDynamicValue ? minimumDynamicValue : DynamicTension;
-            DynamicFriction = DynamicFriction < minimumDynamicValue ? minimumDynamicValue : DynamicFriction;
+            var defaultMass = 1;
+            var defaultTension = 342;
+            var defaultFriction = 30;
+            DynamicsMass = DynamicsMass < minimumDynamicValue ? defaultMass : DynamicsMass;
+            DynamicsTension = DynamicsTension < minimumDynamicValue ? defaultTension : DynamicsTension;
+            DynamicsFriction = DynamicsFriction < minimumDynamicValue ? defaultFriction : DynamicsFriction;
         }
 
         CGPoint CalculateBoxLocation()
@@ -88,17 +93,17 @@ namespace Popper
             var animationSize = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerBounds);
             var size = new CGSize(SizeX, SizeY);
             animationSize.ToValue = NSValue.FromCGRect(new CGRect(new CGPoint(0, 0), size));
-            animationSize.DynamicsMass = DynamicMass;
-            animationSize.DynamicsTension = DynamicTension;
-            animationSize.DynamicsFriction = DynamicFriction;
+            animationSize.DynamicsMass = DynamicsMass;
+            animationSize.DynamicsTension = DynamicsTension;
+            animationSize.DynamicsFriction = DynamicsFriction;
             animationView.Layer.AddAnimation(animationSize, "size");
 
             var animation = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPosition);
             var location = CalculateBoxLocation();
             animation.ToValue = NSValue.FromCGRect(new CGRect(location, new CGSize(0, 0)));
-            animation.DynamicsMass = DynamicMass;
-            animation.DynamicsTension = DynamicTension;
-            animation.DynamicsFriction = DynamicFriction;
+            animation.DynamicsMass = DynamicsMass;
+            animation.DynamicsTension = DynamicsTension;
+            animation.DynamicsFriction = DynamicsFriction;
             animationView.Layer.AddAnimation(animation, "location");
         }
 
@@ -109,9 +114,9 @@ namespace Popper
 
             var size = new CGSize(SizeX * multiplier, SizeY * multiplier);
             animationSize.ToValue = NSValue.FromCGRect(new CGRect(new CGPoint(0, 0), size));
-            animationSize.DynamicsMass = DynamicMass;
-            animationSize.DynamicsTension = DynamicTension;
-            animationSize.DynamicsFriction = DynamicFriction;
+            animationSize.DynamicsMass = DynamicsMass;
+            animationSize.DynamicsTension = DynamicsTension;
+            animationSize.DynamicsFriction = DynamicsFriction;
             animationView.Layer.AddAnimation(animationSize, "size");
         }
 
@@ -129,6 +134,11 @@ namespace Popper
             {
                 BoxSizeAnimation();
             };
+        }
+
+        void InitBox()
+        {
+            animationView.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width - Constants.DefaultBoxEdge, 0, SizeX, SizeY);
         }
     }
 }

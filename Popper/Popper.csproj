@@ -169,6 +169,7 @@
       <DependentUpon>TabBarController.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Theme.cs" />
+    <Compile Include="Utilities\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="Facebook.Pop">

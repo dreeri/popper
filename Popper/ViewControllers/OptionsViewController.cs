@@ -3,6 +3,7 @@
 using System;
 
 using Foundation;
+using Popper.Utilities;
 using UIKit;
 
 namespace Popper
@@ -25,17 +26,15 @@ namespace Popper
 
         void InitSliders()
         {
-            slider1.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider1");
-            slider2.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
-            slider3.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
-            slider4.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
-            slider5.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
-
+            slider1.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider1") < 1f ? Constants.DefaultBoxEdge : NSUserDefaults.StandardUserDefaults.FloatForKey("slider1");
+            slider2.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2") < 1f ? Constants.DefaultBoxEdge : NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
+            slider3.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3") < 1f ? Constants.DefaultBoxEdge : NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
+            slider4.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4") < 1f ? Constants.DefaultBoxEdge : NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
+            slider5.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5") < 1f ? Constants.DefaultBoxEdge : NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
 
             slider1.ValueChanged += (object sender, EventArgs e) =>
             {
-                var slider1 = ((UISlider)sender).Value;
-                UserDefaults.SetFloat(slider1, "slider1");
+                UserDefaults.SetFloat(((UISlider)sender).Value, "slider1");
             };
 
             slider2.ValueChanged += (object sender, EventArgs e) =>
