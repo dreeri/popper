@@ -121,6 +121,7 @@
     <Folder Include="ViewControllers\" />
     <Folder Include="Resources\Assets.xcassets\" />
     <Folder Include="Resources\Assets.xcassets\fb.imageset\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -157,6 +158,7 @@
     <Compile Include="ViewControllers\TabBarController.designer.cs">
       <DependentUpon>TabBarController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Theme.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="Facebook.Pop">

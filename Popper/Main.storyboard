@@ -194,7 +194,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="FB Pop" id="tF0-8K-t6x"/>
+                    <tabBarItem key="tabBarItem" title="FB Pop" image="fb" id="tF0-8K-t6x"/>
                     <connections>
                         <outlet property="animationView" destination="rLV-Af-utl" id="eE3-rA-LUv"/>
                         <outlet property="button1" destination="2Xm-aj-7hO" id="FCe-4E-rgl"/>
@@ -333,4 +333,7 @@
             <point key="canvasLocation" x="1452" y="-344"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fb" width="22" height="22"/>
+    </resources>
 </document>

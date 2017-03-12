@@ -3,6 +3,7 @@
 using System;
 
 using Foundation;
+using Popper.Utilities;
 using UIKit;
 
 namespace Popper
@@ -16,7 +17,7 @@ namespace Popper
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            UITabBar.Appearance.SelectedImageTintColor = UIColor.FromRGB(255, 204, 92);
+            UITabBar.Appearance.SelectedImageTintColor = Theme.Colors.Orange;
         }
     }
 }
