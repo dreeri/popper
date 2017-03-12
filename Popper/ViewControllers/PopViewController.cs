@@ -43,6 +43,9 @@ namespace Popper
         {
             SizeX = NSUserDefaults.StandardUserDefaults.FloatForKey("slider1");
             SizeY = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
+            var minimumSize = 60f;
+            SizeX = SizeX < minimumSize ? minimumSize : SizeX;
+            SizeY = SizeY < minimumSize ? minimumSize : SizeY;
         }
 
         CGPoint CalculateBoxLocation()

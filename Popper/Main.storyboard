@@ -142,11 +142,11 @@
             </objects>
             <point key="canvasLocation" x="734" y="-344"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Native-->
         <scene sceneID="1F7-FN-TC5">
             <objects>
                 <navigationController id="PYH-tH-SXZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="history" id="mgF-fm-H3P"/>
+                    <tabBarItem key="tabBarItem" title="Native" id="mgF-fm-H3P"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="qNt-Sp-70G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -173,7 +173,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rLV-Af-utl">
-                                <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                <rect key="frame" x="1" y="0.0" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -194,7 +194,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="tF0-8K-t6x"/>
+                    <tabBarItem key="tabBarItem" title="FB Pop" id="tF0-8K-t6x"/>
                     <connections>
                         <outlet property="animationView" destination="rLV-Af-utl" id="eE3-rA-LUv"/>
                         <outlet property="button1" destination="2Xm-aj-7hO" id="FCe-4E-rgl"/>
@@ -204,7 +204,7 @@
             </objects>
             <point key="canvasLocation" x="-7.2000000000000002" y="472.71364317841085"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="NPA-8p-s5n">
             <objects>
                 <viewController id="7fk-q7-l0S" customClass="OptionsViewController" sceneMemberID="viewController">
@@ -265,7 +265,7 @@
                             <constraint firstItem="X31-8F-m3F" firstAttribute="leading" secondItem="mP7-RK-X7z" secondAttribute="leading" constant="32" id="wMY-XQ-TSY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="aMD-Dx-DAf"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="aMD-Dx-DAf"/>
                     <connections>
                         <outlet property="slider1" destination="xXe-UN-EAw" id="06A-fB-rMk"/>
                         <outlet property="slider2" destination="Gbb-II-8Qq" id="5AA-fW-RMs"/>
@@ -278,7 +278,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Ble-8Y-Rlb">
             <objects>
-                <tabBarController id="9tU-s8-NAt" sceneMemberID="viewController">
+                <tabBarController id="9tU-s8-NAt" customClass="TabBarController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="38c-Nk-3ro">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
