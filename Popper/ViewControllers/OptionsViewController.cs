@@ -27,6 +27,10 @@ namespace Popper
         {
             slider1.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider1");
             slider2.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
+            slider3.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
+            slider4.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
+            slider5.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
+
 
             slider1.ValueChanged += (object sender, EventArgs e) =>
             {
@@ -38,6 +42,24 @@ namespace Popper
             {
                 var slider2 = ((UISlider)sender).Value;
                 UserDefaults.SetFloat(slider2, "slider2");
+            };
+
+            slider3.ValueChanged += (object sender, EventArgs e) =>
+            {
+                var slider3 = ((UISlider)sender).Value;
+                UserDefaults.SetFloat(slider3, "slider3");
+            };
+
+            slider4.ValueChanged += (object sender, EventArgs e) =>
+            {
+                var slider4 = ((UISlider)sender).Value;
+                UserDefaults.SetFloat(slider4, "slider4");
+            };
+
+            slider5.ValueChanged += (object sender, EventArgs e) =>
+            {
+                var slider5 = ((UISlider)sender).Value;
+                UserDefaults.SetFloat(slider5, "slider5");
             };
         }
     }

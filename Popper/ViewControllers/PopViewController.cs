@@ -20,6 +20,10 @@ namespace Popper
 
         float SizeX;
         float SizeY;
+        float DynamicMass;
+        float DynamicTension;
+        float DynamicFriction;
+
         BoxLocation Location;
 
         public PopViewController(IntPtr handle) : base(handle)
@@ -43,9 +47,17 @@ namespace Popper
         {
             SizeX = NSUserDefaults.StandardUserDefaults.FloatForKey("slider1");
             SizeY = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
+            DynamicMass = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
+            DynamicTension = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
+            DynamicFriction = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
+
             var minimumSize = 60f;
             SizeX = SizeX < minimumSize ? minimumSize : SizeX;
             SizeY = SizeY < minimumSize ? minimumSize : SizeY;
+            var minimumDynamicValue = 1f;
+            DynamicMass = DynamicMass < minimumDynamicValue ? minimumDynamicValue : DynamicMass;
+            DynamicTension = DynamicTension < minimumDynamicValue ? minimumDynamicValue : DynamicTension;
+            DynamicFriction = DynamicFriction < minimumDynamicValue ? minimumDynamicValue : DynamicFriction;
         }
 
         CGPoint CalculateBoxLocation()
@@ -71,17 +83,36 @@ namespace Popper
             }
         }
 
-        void BoxAnimation()
+        void BoxLocationAnimation()
         {
             var animationSize = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerBounds);
             var size = new CGSize(SizeX, SizeY);
             animationSize.ToValue = NSValue.FromCGRect(new CGRect(new CGPoint(0, 0), size));
+            animationSize.DynamicsMass = DynamicMass;
+            animationSize.DynamicsTension = DynamicTension;
+            animationSize.DynamicsFriction = DynamicFriction;
             animationView.Layer.AddAnimation(animationSize, "size");
 
             var animation = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPosition);
             var location = CalculateBoxLocation();
             animation.ToValue = NSValue.FromCGRect(new CGRect(location, new CGSize(0, 0)));
+            animation.DynamicsMass = DynamicMass;
+            animation.DynamicsTension = DynamicTension;
+            animation.DynamicsFriction = DynamicFriction;
             animationView.Layer.AddAnimation(animation, "location");
+        }
+
+        void BoxSizeAnimation()
+        {
+            var animationSize = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerBounds);
+            var multiplier = 0.8;
+
+            var size = new CGSize(SizeX * multiplier, SizeY * multiplier);
+            animationSize.ToValue = NSValue.FromCGRect(new CGRect(new CGPoint(0, 0), size));
+            animationSize.DynamicsMass = DynamicMass;
+            animationSize.DynamicsTension = DynamicTension;
+            animationSize.DynamicsFriction = DynamicFriction;
+            animationView.Layer.AddAnimation(animationSize, "size");
         }
 
         void InitButtons()
@@ -91,7 +122,12 @@ namespace Popper
                 var boxLocationLength = Enum.GetNames(typeof(BoxLocation)).Length - 1;
                 var index = (int)Location < boxLocationLength ? 1 : -(boxLocationLength);
                 Location = (BoxLocation)((int)Location + index);
-                BoxAnimation();
+                BoxLocationAnimation();
+            };
+
+            button1.TouchDown += (object sender, EventArgs e) =>
+            {
+                BoxSizeAnimation();
             };
         }
     }

@@ -17,6 +17,15 @@ namespace Popper
 
 		[Outlet]
 		UIKit.UISlider slider2 { get; set; }
+
+		[Outlet]
+		UIKit.UISlider slider3 { get; set; }
+
+		[Outlet]
+		UIKit.UISlider slider4 { get; set; }
+
+		[Outlet]
+		UIKit.UISlider slider5 { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -28,6 +37,21 @@ namespace Popper
 			if (slider2 != null) {
 				slider2.Dispose ();
 				slider2 = null;
+			}
+
+			if (slider3 != null) {
+				slider3.Dispose ();
+				slider3 = null;
+			}
+
+			if (slider4 != null) {
+				slider4.Dispose ();
+				slider4 = null;
+			}
+
+			if (slider5 != null) {
+				slider5.Dispose ();
+				slider5 = null;
 			}
 		}
 	}
