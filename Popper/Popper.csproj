@@ -115,6 +115,14 @@
     <ImageAsset Include="Resources\Assets.xcassets\fb.imageset\icon_fb.png" />
     <ImageAsset Include="Resources\Assets.xcassets\fb.imageset\icon_fb%402x.png" />
     <ImageAsset Include="Resources\Assets.xcassets\fb.imageset\icon_fb%403x.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\cog.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\cog.imageset\settings-cog.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\cog.imageset\settings-cog%402x.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\cog.imageset\settings-cog%403x.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\cycle.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\cycle.imageset\icon_camera_flip.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\cycle.imageset\icon_camera_flip%402x.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\cycle.imageset\icon_camera_flip%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -122,6 +130,8 @@
     <Folder Include="Resources\Assets.xcassets\" />
     <Folder Include="Resources\Assets.xcassets\fb.imageset\" />
     <Folder Include="Utilities\" />
+    <Folder Include="Resources\Assets.xcassets\cog.imageset\" />
+    <Folder Include="Resources\Assets.xcassets\cycle.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

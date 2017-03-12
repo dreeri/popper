@@ -146,7 +146,7 @@
         <scene sceneID="1F7-FN-TC5">
             <objects>
                 <navigationController id="PYH-tH-SXZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Native" id="mgF-fm-H3P"/>
+                    <tabBarItem key="tabBarItem" title="Native" image="cycle" id="mgF-fm-H3P"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="qNt-Sp-70G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -265,7 +265,7 @@
                             <constraint firstItem="X31-8F-m3F" firstAttribute="leading" secondItem="mP7-RK-X7z" secondAttribute="leading" constant="32" id="wMY-XQ-TSY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="aMD-Dx-DAf"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="cog" id="aMD-Dx-DAf"/>
                     <connections>
                         <outlet property="slider1" destination="xXe-UN-EAw" id="06A-fB-rMk"/>
                         <outlet property="slider2" destination="Gbb-II-8Qq" id="5AA-fW-RMs"/>
@@ -334,6 +334,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cog" width="20" height="20"/>
+        <image name="cycle" width="22" height="22"/>
         <image name="fb" width="22" height="22"/>
     </resources>
 </document>
