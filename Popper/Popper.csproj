@@ -170,6 +170,10 @@
     </Compile>
     <Compile Include="Utilities\Theme.cs" />
     <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="ViewControllers\DecayViewController.cs" />
+    <Compile Include="ViewControllers\DecayViewController.designer.cs">
+      <DependentUpon>DecayViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="Facebook.Pop">
