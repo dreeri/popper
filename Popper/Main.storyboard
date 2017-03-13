@@ -506,7 +506,7 @@
             </objects>
             <point key="canvasLocation" x="-759" y="1935"/>
         </scene>
-        <!--Item-->
+        <!--Decay-->
         <scene sceneID="gFb-zD-zlU">
             <objects>
                 <viewController id="Frr-nS-Dz4" customClass="DecayViewController" sceneMemberID="viewController">
@@ -538,7 +538,7 @@
                             <constraint firstItem="9IF-sp-A10" firstAttribute="top" secondItem="Y3N-Vz-ZDW" secondAttribute="top" id="qQY-3s-zTt"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="zec-AW-243"/>
+                    <tabBarItem key="tabBarItem" title="Decay" image="slide" id="zec-AW-243"/>
                     <connections>
                         <outlet property="animationView" destination="d8I-TH-cbm" id="WEe-3I-ar0"/>
                     </connections>
@@ -610,5 +610,6 @@
         <image name="cog" width="20" height="20"/>
         <image name="cycle" width="22" height="22"/>
         <image name="fb" width="22" height="22"/>
+        <image name="slide" width="22" height="22"/>
     </resources>
 </document>

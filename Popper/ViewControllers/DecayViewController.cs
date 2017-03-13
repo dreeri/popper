@@ -23,7 +23,7 @@ namespace Popper
         void AnimationViewDragged(UIPanGestureRecognizer recognizer)
         {
             var animation = POPDecayAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPosition);
-            animation.Velocity = NSValue.FromCGPoint(recognizer.TranslationInView(animationView));
+            animation.Velocity = NSValue.FromCGPoint(recognizer.TranslationInView(View));
             animationView.Layer.AddAnimation(animation, "slide");
         }
 

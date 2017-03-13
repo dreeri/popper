@@ -1,3 +1,4 @@
 TODO:
 
-Decay animation from Pop.
+CAAnimation and Pop animation side by side.
+
