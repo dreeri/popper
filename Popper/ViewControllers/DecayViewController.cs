@@ -42,6 +42,11 @@ namespace Popper
             DynamicsMass = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
             DynamicsTension = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
             DynamicsFriction = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
+
+            var minimumDynamicValue = 1f;
+            DynamicsMass = DynamicsMass < minimumDynamicValue ? Constants.DefaultPopDynamicsMass : DynamicsMass;
+            DynamicsTension = DynamicsTension < minimumDynamicValue ? Constants.DefaultPopDynamicsTension : DynamicsTension;
+            DynamicsFriction = DynamicsFriction < minimumDynamicValue ? Constants.DefaultPopDynamicsFriction : DynamicsFriction;
         }
 
         void ResetPosition()
@@ -58,16 +63,14 @@ namespace Popper
         void AnimationViewDragged(UIPanGestureRecognizer recognizer)
         {
             Console.WriteLine(recognizer.State);
-            if (recognizer.State == UIGestureRecognizerState.Began)
+            if (recognizer.State == UIGestureRecognizerState.Began || recognizer.State == UIGestureRecognizerState.Changed)
             {
-                PanRecognizer.Enabled = false;
-                var yTranslation = recognizer.TranslationInView(View).Y * 10;
+                var yTranslation = recognizer.TranslationInView(View).Y;
                 var animation = POPDecayAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPositionY);
                 animation.Velocity = NSValue.FromCGPoint(new CGPoint(yTranslation, 0));
                 animation.CompletionAction = (arg1, arg2) =>
                 {
                     ResetPosition();
-                    PanRecognizer.Enabled = true;
                 };
                 animationView.Layer.AddAnimation(animation, "slide");
             }

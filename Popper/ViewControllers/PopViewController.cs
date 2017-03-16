@@ -57,12 +57,10 @@ namespace Popper
             SizeX = SizeX < minimumSize ? minimumSize : SizeX;
             SizeY = SizeY < minimumSize ? minimumSize : SizeY;
             var minimumDynamicValue = 1f;
-            var defaultMass = 1;
-            var defaultTension = 342;
-            var defaultFriction = 30;
-            DynamicsMass = DynamicsMass < minimumDynamicValue ? defaultMass : DynamicsMass;
-            DynamicsTension = DynamicsTension < minimumDynamicValue ? defaultTension : DynamicsTension;
-            DynamicsFriction = DynamicsFriction < minimumDynamicValue ? defaultFriction : DynamicsFriction;
+
+            DynamicsMass = DynamicsMass < minimumDynamicValue ? Constants.DefaultPopDynamicsMass : DynamicsMass;
+            DynamicsTension = DynamicsTension < minimumDynamicValue ? Constants.DefaultPopDynamicsTension : DynamicsTension;
+            DynamicsFriction = DynamicsFriction < minimumDynamicValue ? Constants.DefaultPopDynamicsFriction : DynamicsFriction;
         }
 
         CGPoint CalculateBoxLocation()
