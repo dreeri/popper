@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -520,22 +521,32 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9IF-sp-A10">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
-                                <color key="backgroundColor" red="0.58823529411764708" green="0.80784313725490198" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.58823529409999997" green="0.80784313730000001" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Cjh-j2-8ba"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQQ-84-DSa">
+                                <rect key="frame" x="179" y="166" width="16" height="333.5"/>
+                                <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="sRF-9R-o6H"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d8I-TH-cbm">
-                                <rect key="frame" x="0.0" y="20" width="60" height="60"/>
+                                <rect key="frame" x="157" y="287" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.58823529411764708" green="0.80784313725490198" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.43529411759999997" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="9IF-sp-A10" secondAttribute="trailing" id="4la-8Y-oZX"/>
                             <constraint firstItem="9IF-sp-A10" firstAttribute="leading" secondItem="Y3N-Vz-ZDW" secondAttribute="leading" id="Th5-ca-xc6"/>
+                            <constraint firstItem="RQQ-84-DSa" firstAttribute="centerX" secondItem="Y3N-Vz-ZDW" secondAttribute="centerX" id="hwt-Ht-Vml"/>
+                            <constraint firstItem="RQQ-84-DSa" firstAttribute="centerY" secondItem="Y3N-Vz-ZDW" secondAttribute="centerY" id="llp-qC-8Iz"/>
                             <constraint firstItem="9IF-sp-A10" firstAttribute="top" secondItem="Y3N-Vz-ZDW" secondAttribute="top" id="qQY-3s-zTt"/>
+                            <constraint firstItem="RQQ-84-DSa" firstAttribute="height" secondItem="Y3N-Vz-ZDW" secondAttribute="height" multiplier="0.5" id="v3B-xB-kLS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Decay" image="slide" id="zec-AW-243"/>

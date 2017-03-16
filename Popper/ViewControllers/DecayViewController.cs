@@ -4,12 +4,21 @@ using System;
 using CoreGraphics;
 using Facebook.Pop;
 using Foundation;
+using Popper.Utilities;
 using UIKit;
 
 namespace Popper
 {
     public partial class DecayViewController : UIViewController
     {
+        CGRect BoxFrame;
+
+        float DynamicsMass;
+        float DynamicsTension;
+        float DynamicsFriction;
+
+        UIPanGestureRecognizer PanRecognizer;
+
         public DecayViewController(IntPtr handle) : base(handle)
         {
         }
@@ -18,18 +27,56 @@ namespace Popper
         {
             base.ViewDidLoad();
             InitPanGestureRecognizer();
+            BoxFrame = animationView.Frame;
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+            GetUserDefaults();
+            ResetPosition();
+        }
+
+        void GetUserDefaults()
+        {
+            DynamicsMass = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
+            DynamicsTension = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
+            DynamicsFriction = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
+        }
+
+        void ResetPosition()
+        {
+            var animation = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPosition);
+            var location = new CGPoint(BoxFrame.X + Constants.DefaultBoxEdge / 2, BoxFrame.Y + Constants.DefaultBoxEdge / 2);
+            animation.ToValue = NSValue.FromCGPoint(location);
+            animation.DynamicsMass = DynamicsMass;
+            animation.DynamicsTension = DynamicsTension;
+            animation.DynamicsFriction = DynamicsFriction;
+            animationView.Layer.AddAnimation(animation, "location");
         }
 
         void AnimationViewDragged(UIPanGestureRecognizer recognizer)
         {
-            var animation = POPDecayAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPosition);
-            animation.Velocity = NSValue.FromCGPoint(recognizer.TranslationInView(View));
-            animationView.Layer.AddAnimation(animation, "slide");
+            Console.WriteLine(recognizer.State);
+            if (recognizer.State == UIGestureRecognizerState.Began)
+            {
+                PanRecognizer.Enabled = false;
+                var yTranslation = recognizer.TranslationInView(View).Y * 10;
+                var animation = POPDecayAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPositionY);
+                animation.Velocity = NSValue.FromCGPoint(new CGPoint(yTranslation, 0));
+                animation.CompletionAction = (arg1, arg2) =>
+                {
+                    ResetPosition();
+                    PanRecognizer.Enabled = true;
+                };
+                animationView.Layer.AddAnimation(animation, "slide");
+            }
         }
 
         void InitPanGestureRecognizer()
         {
-            animationView.AddGestureRecognizer(new UIPanGestureRecognizer(recognizer => AnimationViewDragged(recognizer)));
+            PanRecognizer = new UIPanGestureRecognizer(recognizer => AnimationViewDragged(recognizer));
+            View.AddGestureRecognizer(PanRecognizer);
         }
     }
 }
