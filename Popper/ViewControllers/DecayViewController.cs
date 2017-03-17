@@ -66,7 +66,7 @@ namespace Popper
             {
                 var yTranslation = recognizer.TranslationInView(View).Y;
                 var animation = POPDecayAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPositionY);
-                animation.Velocity = NSValue.FromCGPoint(new CGPoint(yTranslation, 0));
+                animation.Velocity = NSObject.FromObject(yTranslation);
                 animation.CompletionAction = (arg1, arg2) =>
                 {
                     ResetPosition();

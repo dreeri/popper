@@ -483,13 +483,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="um8-B1-23U">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
-                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="9nu-aS-afy"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vts-oU-SdV">
                                 <rect key="frame" x="32" y="52" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -502,6 +495,13 @@
                                     <color key="titleColor" red="1" green="0.43529411759999997" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="um8-B1-23U">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="9nu-aS-afy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -514,7 +514,7 @@
                             <constraint firstItem="6WR-4h-V7S" firstAttribute="centerY" secondItem="Pg4-ve-Vem" secondAttribute="centerY" id="zr5-OX-53v"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Basic" id="09J-Jq-EGQ"/>
+                    <tabBarItem key="tabBarItem" title="Basic" image="circle" id="09J-Jq-EGQ"/>
                     <connections>
                         <outlet property="animationView" destination="vts-oU-SdV" id="3g1-7B-rAX"/>
                         <outlet property="button1" destination="6WR-4h-V7S" id="f2f-T9-4bt"/>
@@ -585,6 +585,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="circle" width="22" height="22"/>
         <image name="cog" width="20" height="20"/>
         <image name="cycle" width="22" height="22"/>
         <image name="fb" width="22" height="22"/>
