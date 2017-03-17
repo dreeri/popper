@@ -3,6 +3,7 @@
 using System;
 
 using Foundation;
+using Popper.Utilities;
 using UIKit;
 
 namespace Popper
@@ -17,54 +18,75 @@ namespace Popper
         {
             base.ViewDidLoad();
 
-            AddButtonEvents();
             StyleNavbar();
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+            AddButtonEvents();
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+            Button1.TouchUpInside -= Button1TouchUpInside;
+            Button2.TouchUpInside -= Button2TouchUpInside;
+            Button3.TouchUpInside -= Button3TouchUpInside;
+            Button4.TouchUpInside -= Button4TouchUpInside;
+            Button5.TouchUpInside -= Button5TouchUpInside;
         }
 
         void StyleNavbar()
         {
             NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes()
             {
-                ForegroundColor = UIColor.FromRGB(255, 204, 92),
+                ForegroundColor = Theme.Colors.Orange,
                 Font = UIFont.SystemFontOfSize(24.0f, UIFontWeight.Light)
             };
         }
 
         void AddButtonEvents()
         {
-            Button1.TouchUpInside += (object sender, EventArgs e) =>
-            {
-                DestinationViewController destination = Storyboard.InstantiateViewController("DestinationViewController") as DestinationViewController;
-                NavigationController.PushViewController(destination, true);
-            };
+            Button1.TouchUpInside += Button1TouchUpInside;
+            Button2.TouchUpInside += Button2TouchUpInside;
+            Button3.TouchUpInside += Button3TouchUpInside;
+            Button4.TouchUpInside += Button4TouchUpInside;
+            Button5.TouchUpInside += Button5TouchUpInside;
+        }
 
-            Button2.TouchUpInside += (object sender, EventArgs e) =>
-            {
-                ModalViewController destination = Storyboard.InstantiateViewController("ModalViewController") as ModalViewController;
-                destination.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-                NavigationController.PresentViewController(destination, true, null);
-            };
+        void Button1TouchUpInside(object sender, EventArgs e)
+        {
+            DestinationViewController destination = Storyboard.InstantiateViewController("DestinationViewController") as DestinationViewController;
+            NavigationController.PushViewController(destination, true);
+        }
 
-            Button3.TouchUpInside += (object sender, EventArgs e) =>
-            {
-                ModalViewController destination = Storyboard.InstantiateViewController("ModalViewController") as ModalViewController;
-                destination.ModalTransitionStyle = UIModalTransitionStyle.FlipHorizontal;
-                NavigationController.PresentViewController(destination, true, null);
-            };
+        void Button2TouchUpInside(object sender, EventArgs e)
+        {
+            ModalViewController destination = Storyboard.InstantiateViewController("ModalViewController") as ModalViewController;
+            destination.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+            NavigationController.PresentViewController(destination, true, null);
+        }
 
-            Button4.TouchUpInside += (object sender, EventArgs e) =>
-            {
-                ModalViewController destination = Storyboard.InstantiateViewController("ModalViewController") as ModalViewController;
-                destination.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
-                NavigationController.PresentViewController(destination, true, null);
-            };
+        void Button3TouchUpInside(object sender, EventArgs e)
+        {
+            ModalViewController destination = Storyboard.InstantiateViewController("ModalViewController") as ModalViewController;
+            destination.ModalTransitionStyle = UIModalTransitionStyle.FlipHorizontal;
+            NavigationController.PresentViewController(destination, true, null);
+        }
 
-            Button5.TouchUpInside += (object sender, EventArgs e) =>
-            {
-                ModalViewController destination = Storyboard.InstantiateViewController("ModalViewController") as ModalViewController;
-                destination.ModalTransitionStyle = UIModalTransitionStyle.PartialCurl;
-                NavigationController.PresentViewController(destination, true, null);
-            };
+        void Button4TouchUpInside(object sender, EventArgs e)
+        {
+            ModalViewController destination = Storyboard.InstantiateViewController("ModalViewController") as ModalViewController;
+            destination.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+            NavigationController.PresentViewController(destination, true, null);
+        }
+
+        void Button5TouchUpInside(object sender, EventArgs e)
+        {
+            ModalViewController destination = Storyboard.InstantiateViewController("ModalViewController") as ModalViewController;
+            destination.ModalTransitionStyle = UIModalTransitionStyle.PartialCurl;
+            NavigationController.PresentViewController(destination, true, null);
         }
     }
 }

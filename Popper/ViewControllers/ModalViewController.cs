@@ -17,10 +17,18 @@ namespace Popper
         {
             base.ViewDidAppear(animated);
 
-            DismissButton.TouchUpInside += (object sender, EventArgs e) =>
-            {
-                DismissModalViewController(true);
-            };
+            DismissButton.TouchUpInside += DismissButtonTouchUpInside;
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+            DismissButton.TouchUpInside -= DismissButtonTouchUpInside;
+        }
+
+        void DismissButtonTouchUpInside(object sender, EventArgs e)
+        {
+            DismissModalViewController(true);
         }
     }
 }

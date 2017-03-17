@@ -16,12 +16,19 @@ namespace Popper
         {
         }
 
-        public override void ViewDidLoad()
+        public override void ViewDidAppear(bool animated)
         {
-            base.ViewDidLoad();
-
             UserDefaults = NSUserDefaults.StandardUserDefaults;
+            base.ViewDidAppear(animated);
             InitValues();
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+            slider1.ValueChanged -= Slider1ValueChanged;
+            slider2.ValueChanged -= Slider2ValueChanged;
+            slider3.ValueChanged -= Slider3ValueChanged;
         }
 
         void InitValues()
@@ -29,45 +36,32 @@ namespace Popper
             slider1.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider1") < 1f ? Constants.DefaultBoxEdge : NSUserDefaults.StandardUserDefaults.FloatForKey("slider1");
             slider2.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2") < 1f ? Constants.DefaultBoxEdge : NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
             slider3.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3") < 1f ? Constants.DefaultBoxEdge : NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
-            slider4.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4") < 1f ? Constants.DefaultBoxEdge : NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
-            slider5.Value = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5") < 1f ? Constants.DefaultBoxEdge : NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
 
             label1.Text = ((int)slider1.Value).ToString();
             label2.Text = ((int)slider2.Value).ToString();
             label3.Text = ((int)slider3.Value).ToString();
-            label4.Text = ((int)slider4.Value).ToString();
-            label5.Text = ((int)slider5.Value).ToString();
 
+            slider1.ValueChanged += Slider1ValueChanged;
+            slider2.ValueChanged += Slider2ValueChanged;
+            slider3.ValueChanged += Slider3ValueChanged;
+        }
 
-            slider1.ValueChanged += (object sender, EventArgs e) =>
-            {
-                UserDefaults.SetFloat(((UISlider)sender).Value, "slider1");
-                label1.Text = ((int)((UISlider)sender).Value).ToString();
-            };
+        void Slider1ValueChanged(object sender, EventArgs e)
+        {
+            UserDefaults.SetFloat(((UISlider)sender).Value, "slider1");
+            label1.Text = ((int)((UISlider)sender).Value).ToString();
+        }
 
-            slider2.ValueChanged += (object sender, EventArgs e) =>
-            {
-                UserDefaults.SetFloat(((UISlider)sender).Value, "slider2");
-                label2.Text = ((int)((UISlider)sender).Value).ToString();
-            };
+        void Slider2ValueChanged(object sender, EventArgs e)
+        {
+            UserDefaults.SetFloat(((UISlider)sender).Value, "slider2");
+            label2.Text = ((int)((UISlider)sender).Value).ToString();
+        }
 
-            slider3.ValueChanged += (object sender, EventArgs e) =>
-            {
-                UserDefaults.SetFloat(((UISlider)sender).Value, "slider3");
-                label3.Text = ((int)((UISlider)sender).Value).ToString();
-            };
-
-            slider4.ValueChanged += (object sender, EventArgs e) =>
-            {
-                UserDefaults.SetFloat(((UISlider)sender).Value, "slider4");
-                label4.Text = ((int)((UISlider)sender).Value).ToString();
-            };
-
-            slider5.ValueChanged += (object sender, EventArgs e) =>
-            {
-                UserDefaults.SetFloat(((UISlider)sender).Value, "slider5");
-                label5.Text = ((int)((UISlider)sender).Value).ToString();
-            };
+        void Slider3ValueChanged(object sender, EventArgs e)
+        {
+            UserDefaults.SetFloat(((UISlider)sender).Value, "slider3");
+            label3.Text = ((int)((UISlider)sender).Value).ToString();
         }
     }
 }

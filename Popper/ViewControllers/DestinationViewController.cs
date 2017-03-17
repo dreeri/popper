@@ -24,10 +24,18 @@ namespace Popper
         {
             base.ViewDidAppear(animated);
 
-            PopButton.TouchUpInside += (object sender, EventArgs e) =>
-            {
-                NavigationController.PopViewController(true);
-            };
+            PopButton.TouchUpInside += PopButtonTouchUpInside;
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+            PopButton.TouchUpInside -= PopButtonTouchUpInside;
+        }
+
+        void PopButtonTouchUpInside(object sender, EventArgs e)
+        {
+            NavigationController.PopViewController(true);
         }
     }
 }

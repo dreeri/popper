@@ -19,8 +19,6 @@ namespace Popper
             NorthWest
         }
 
-        float SizeX;
-        float SizeY;
         float DynamicsMass;
         float DynamicsTension;
         float DynamicsFriction;
@@ -31,33 +29,28 @@ namespace Popper
         {
         }
 
-        public override void ViewDidLoad()
-        {
-            base.ViewDidLoad();
-            InitButtons();
-            GetUserDefaults();
-            InitBox();
-        }
-
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
+            InitBox();
+            InitButtons();
             GetUserDefaults();
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+            button1.TouchUpInside -= Button1TouchUpInside;
+            button1.TouchDown -= Button1TouchDown;
         }
 
         void GetUserDefaults()
         {
-            SizeX = NSUserDefaults.StandardUserDefaults.FloatForKey("slider1");
-            SizeY = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
-            DynamicsMass = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
-            DynamicsTension = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
-            DynamicsFriction = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
+            DynamicsMass = NSUserDefaults.StandardUserDefaults.FloatForKey("slider1");
+            DynamicsTension = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
+            DynamicsFriction = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
 
-            var minimumSize = 60f;
-            SizeX = SizeX < minimumSize ? minimumSize : SizeX;
-            SizeY = SizeY < minimumSize ? minimumSize : SizeY;
             var minimumDynamicValue = 1f;
-
             DynamicsMass = DynamicsMass < minimumDynamicValue ? Constants.DefaultPopDynamicsMass : DynamicsMass;
             DynamicsTension = DynamicsTension < minimumDynamicValue ? Constants.DefaultPopDynamicsTension : DynamicsTension;
             DynamicsFriction = DynamicsFriction < minimumDynamicValue ? Constants.DefaultPopDynamicsFriction : DynamicsFriction;
@@ -69,8 +62,8 @@ namespace Popper
             var screenHeight = UIScreen.MainScreen.Bounds.Height;
 
             var statusBarHeight = 20f;
-            var halfWidth = SizeX / 2;
-            var halfHeight = SizeY / 2;
+            var halfWidth = Constants.DefaultBoxEdge / 2;
+            var halfHeight = Constants.DefaultBoxEdge / 2;
             var tabBarHeight = TabBarController?.TabBar.Bounds.Size.Height ?? 59f;
             switch (Location)
             {
@@ -90,7 +83,7 @@ namespace Popper
         void BoxLocationAnimation()
         {
             var animationSize = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerBounds);
-            var size = new CGSize(SizeX, SizeY);
+            var size = new CGSize(Constants.DefaultBoxEdge, Constants.DefaultBoxEdge);
             animationSize.ToValue = NSValue.FromCGRect(new CGRect(new CGPoint(0, 0), size));
             animationSize.DynamicsMass = DynamicsMass;
             animationSize.DynamicsTension = DynamicsTension;
@@ -111,7 +104,7 @@ namespace Popper
             var animationSize = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerBounds);
             var multiplier = 0.7;
 
-            var size = new CGSize(SizeX * multiplier, SizeY * multiplier);
+            var size = new CGSize(Constants.DefaultBoxEdge * multiplier, Constants.DefaultBoxEdge * multiplier);
             animationSize.ToValue = NSValue.FromCGRect(new CGRect(new CGPoint(0, 0), size));
             animationSize.DynamicsMass = DynamicsMass;
             animationSize.DynamicsTension = DynamicsTension;
@@ -121,24 +114,27 @@ namespace Popper
 
         void InitButtons()
         {
-            button1.TouchUpInside += (object sender, EventArgs e) =>
-            {
-                var boxLocationLength = Enum.GetNames(typeof(BoxLocation)).Length - 1;
-                var index = (int)Location < boxLocationLength ? 1 : -(boxLocationLength);
-                Location = (BoxLocation)((int)Location + index);
-                BoxLocationAnimation();
-            };
+            button1.TouchUpInside += Button1TouchUpInside;
+            button1.TouchDown += Button1TouchDown;
+        }
 
-            button1.TouchDown += (object sender, EventArgs e) =>
-            {
-                BoxSizeAnimation();
-            };
+        void Button1TouchUpInside(object sender, EventArgs e)
+        {
+            var boxLocationLength = Enum.GetNames(typeof(BoxLocation)).Length - 1;
+            var index = (int)Location < boxLocationLength ? 1 : -(boxLocationLength);
+            Location = (BoxLocation)((int)Location + index);
+            BoxLocationAnimation();
+        }
+
+        void Button1TouchDown(object sender, EventArgs e)
+        {
+            BoxSizeAnimation();
         }
 
         void InitBox()
         {
             var statusBarHeight = 20;
-            animationView.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width - Constants.DefaultBoxEdge, statusBarHeight, SizeX, SizeY);
+            animationView.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width - Constants.DefaultBoxEdge, statusBarHeight, Constants.DefaultBoxEdge, Constants.DefaultBoxEdge);
         }
     }
 }

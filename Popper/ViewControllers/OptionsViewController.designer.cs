@@ -22,12 +22,6 @@ namespace Popper
 		UIKit.UILabel label3 { get; set; }
 
 		[Outlet]
-		UIKit.UILabel label4 { get; set; }
-
-		[Outlet]
-		UIKit.UILabel label5 { get; set; }
-
-		[Outlet]
 		UIKit.UISlider slider1 { get; set; }
 
 		[Outlet]
@@ -35,40 +29,9 @@ namespace Popper
 
 		[Outlet]
 		UIKit.UISlider slider3 { get; set; }
-
-		[Outlet]
-		UIKit.UISlider slider4 { get; set; }
-
-		[Outlet]
-		UIKit.UISlider slider5 { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (slider1 != null) {
-				slider1.Dispose ();
-				slider1 = null;
-			}
-
-			if (slider2 != null) {
-				slider2.Dispose ();
-				slider2 = null;
-			}
-
-			if (slider3 != null) {
-				slider3.Dispose ();
-				slider3 = null;
-			}
-
-			if (slider4 != null) {
-				slider4.Dispose ();
-				slider4 = null;
-			}
-
-			if (slider5 != null) {
-				slider5.Dispose ();
-				slider5 = null;
-			}
-
 			if (label1 != null) {
 				label1.Dispose ();
 				label1 = null;
@@ -84,14 +47,19 @@ namespace Popper
 				label3 = null;
 			}
 
-			if (label4 != null) {
-				label4.Dispose ();
-				label4 = null;
+			if (slider1 != null) {
+				slider1.Dispose ();
+				slider1 = null;
 			}
 
-			if (label5 != null) {
-				label5.Dispose ();
-				label5 = null;
+			if (slider2 != null) {
+				slider2.Dispose ();
+				slider2 = null;
+			}
+
+			if (slider3 != null) {
+				slider3.Dispose ();
+				slider3 = null;
 			}
 		}
 	}

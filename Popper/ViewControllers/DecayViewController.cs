@@ -39,9 +39,9 @@ namespace Popper
 
         void GetUserDefaults()
         {
-            DynamicsMass = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
-            DynamicsTension = NSUserDefaults.StandardUserDefaults.FloatForKey("slider4");
-            DynamicsFriction = NSUserDefaults.StandardUserDefaults.FloatForKey("slider5");
+            DynamicsMass = NSUserDefaults.StandardUserDefaults.FloatForKey("slider1");
+            DynamicsTension = NSUserDefaults.StandardUserDefaults.FloatForKey("slider2");
+            DynamicsFriction = NSUserDefaults.StandardUserDefaults.FloatForKey("slider3");
 
             var minimumDynamicValue = 1f;
             DynamicsMass = DynamicsMass < minimumDynamicValue ? Constants.DefaultPopDynamicsMass : DynamicsMass;
