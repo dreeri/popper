@@ -29,10 +29,15 @@ namespace Popper
         {
         }
 
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            InitBox();
+        }
+
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-            InitBox();
             InitButtons();
             GetUserDefaults();
         }
@@ -64,7 +69,8 @@ namespace Popper
             var statusBarHeight = 20f;
             var halfWidth = Constants.DefaultBoxEdge / 2;
             var halfHeight = Constants.DefaultBoxEdge / 2;
-            var tabBarHeight = TabBarController?.TabBar.Bounds.Size.Height ?? 59f;
+            var defaultTabBarHeight = 59f;
+            var tabBarHeight = TabBarController?.TabBar.Bounds.Size.Height ?? defaultTabBarHeight;
             switch (Location)
             {
                 case BoxLocation.NorthEast:
@@ -118,11 +124,16 @@ namespace Popper
             button1.TouchDown += Button1TouchDown;
         }
 
-        void Button1TouchUpInside(object sender, EventArgs e)
+        void CountNewBoxLocation()
         {
             var boxLocationLength = Enum.GetNames(typeof(BoxLocation)).Length - 1;
             var index = (int)Location < boxLocationLength ? 1 : -(boxLocationLength);
             Location = (BoxLocation)((int)Location + index);
+        }
+
+        void Button1TouchUpInside(object sender, EventArgs e)
+        {
+            CountNewBoxLocation();
             BoxLocationAnimation();
         }
 

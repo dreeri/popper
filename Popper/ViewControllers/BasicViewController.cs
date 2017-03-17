@@ -41,11 +41,33 @@ namespace Popper
         void InitButtons()
         {
             button1.TouchUpInside += Button1TouchUpInside;
+            button1.TouchDown += Button1TouchDown;
         }
 
         void Button1TouchUpInside(object sender, EventArgs e)
         {
             BoxSizeAnimation();
+        }
+
+        void Button1TouchDown(object sender, EventArgs e)
+        {
+            BoxTeaseAnimation();
+        }
+
+        void BoxTeaseAnimation()
+        {
+            var animationSize = POPBasicAnimation.AnimationWithPropertyNamed(POPAnimation.ViewSize);
+            var size = new CGSize(BoxFrame.Width * 1.3, BoxFrame.Height * 1.3);
+            animationSize.TimingFunction = CAMediaTimingFunction.FromName(CAMediaTimingFunction.EaseInEaseOut);
+            animationSize.ToValue = NSValue.FromCGSize(size);
+            animationSize.AutoReverse = true;
+            animationView.Layer.AddAnimation(animationSize, "size");
+
+            var animationCorner = POPBasicAnimation.AnimationWithPropertyNamed(POPAnimation.LayerCornerRadius);
+            animationCorner.TimingFunction = CAMediaTimingFunction.FromName(CAMediaTimingFunction.EaseInEaseOut);
+            animationCorner.ToValue = NSObject.FromObject(size.Width / 2);
+            animationCorner.AutoReverse = true;
+            animationView.Layer.AddAnimation(animationCorner, "cornerRadius");
         }
 
         void BoxSizeAnimation()
