@@ -18,6 +18,7 @@ namespace Popper
         {
             base.ViewDidLoad();
             UITabBar.Appearance.SelectedImageTintColor = Theme.Colors.Orange;
+            this.TabBar.UnselectedItemTintColor = Theme.Colors.PaleGreen;
         }
     }
 }
