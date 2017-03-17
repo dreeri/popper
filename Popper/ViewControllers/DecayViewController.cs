@@ -27,7 +27,7 @@ namespace Popper
         {
             base.ViewDidLoad();
             InitPanGestureRecognizer();
-            BoxFrame = animationView.Frame;
+            InitBox();
         }
 
         public override void ViewDidAppear(bool animated)
@@ -62,7 +62,6 @@ namespace Popper
 
         void AnimationViewDragged(UIPanGestureRecognizer recognizer)
         {
-            Console.WriteLine(recognizer.State);
             if (recognizer.State == UIGestureRecognizerState.Began || recognizer.State == UIGestureRecognizerState.Changed)
             {
                 var yTranslation = recognizer.TranslationInView(View).Y;
@@ -80,6 +79,12 @@ namespace Popper
         {
             PanRecognizer = new UIPanGestureRecognizer(recognizer => AnimationViewDragged(recognizer));
             View.AddGestureRecognizer(PanRecognizer);
+        }
+
+        void InitBox()
+        {
+            animationView.Frame = new CGRect(new CGPoint(View.Frame.GetMidX() - Constants.DefaultBoxEdge / 2, View.Frame.GetMidY() - Constants.DefaultBoxEdge / 2), new CGSize(Constants.DefaultBoxEdge, Constants.DefaultBoxEdge));
+            BoxFrame = animationView.Frame;
         }
     }
 }

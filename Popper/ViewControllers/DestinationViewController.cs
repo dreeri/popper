@@ -13,6 +13,13 @@ namespace Popper
         {
         }
 
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+
+            NavigationItem.SetHidesBackButton(true, false);
+        }
+
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
