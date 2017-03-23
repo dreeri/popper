@@ -610,14 +610,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQe-UP-tUC">
-                                <rect key="frame" x="16" y="73" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kun-Mh-5sd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="72"/>
+                                <color key="tintColor" red="1" green="0.43529411759999997" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Dismiss"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kun-Mh-5sd" firstAttribute="centerY" secondItem="Okn-wZ-8fM" secondAttribute="centerY" id="Sbf-Fa-4qC"/>
+                            <constraint firstItem="kun-Mh-5sd" firstAttribute="centerX" secondItem="Okn-wZ-8fM" secondAttribute="centerX" id="Ukc-Rq-4hY"/>
+                            <constraint firstItem="kun-Mh-5sd" firstAttribute="width" secondItem="Okn-wZ-8fM" secondAttribute="width" id="bbw-JO-Vpv"/>
+                            <constraint firstItem="kun-Mh-5sd" firstAttribute="height" secondItem="Okn-wZ-8fM" secondAttribute="height" id="iJn-Ay-xlf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="button1" destination="kun-Mh-5sd" id="mqb-HZ-nYR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LoX-7r-egI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -25,6 +25,13 @@ namespace Popper
             base.ViewDidLoad();
             GetUserDefaults();
             this.TransitioningDelegate = new PopTransitioningDelegate(DynamicsMass, DynamicsTension, DynamicsFriction);
+            button1.TouchUpInside += Button1TouchUpInside;
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+            button1.TouchUpInside -= Button1TouchUpInside;
         }
 
         void GetUserDefaults()
@@ -39,5 +46,9 @@ namespace Popper
             DynamicsFriction = DynamicsFriction < minimumDynamicValue ? Constants.DefaultPopDynamicsFriction : DynamicsFriction;
         }
 
+        void Button1TouchUpInside(object sender, EventArgs e)
+        {
+            DismissModalViewController(true);
+        }
     }
 }

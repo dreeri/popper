@@ -12,9 +12,15 @@ namespace Popper
 	[Register ("PopTransitionViewController")]
 	partial class PopTransitionViewController
 	{
+		[Outlet]
+		UIKit.UIButton button1 { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (button1 != null) {
+				button1.Dispose ();
+				button1 = null;
+			}
 		}
 	}
 }
