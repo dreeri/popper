@@ -14,7 +14,7 @@ namespace Popper.Utilities
 
         float DynamicsFriction;
 
-        const double Duration = 0.400;
+        const double UIViewAnimationDuration = 0.400;
 
         public PopAnimationController(float dynamicsMass, float dynamicsTension, float dynamicsFriction)
         {
@@ -40,7 +40,7 @@ namespace Popper.Utilities
 
         void DoUIViewAnimation(UIView toView, CGRect finalFrame, IUIViewControllerContextTransitioning transitionContext)
         {
-            UIView.Animate(Duration, () =>
+            UIView.Animate(UIViewAnimationDuration, () =>
             {
                 toView.Frame = finalFrame;
             }, () =>
@@ -56,14 +56,14 @@ namespace Popper.Utilities
             var finalFrame = transitionContext.GetFinalFrameForViewController(toViewController);
 
             containerView.AddSubview(toViewController.View);
-            toViewController.View.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width, finalFrame.Y, finalFrame.Width, finalFrame.Height);
+            toViewController.View.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width, finalFrame.Y, finalFrame.Width * 2, finalFrame.Height);
 
             DoPopSringAnimation(toViewController.View, finalFrame, transitionContext);
         }
 
         public override double TransitionDuration(IUIViewControllerContextTransitioning transitionContext)
         {
-            return Duration;
+            return UIViewAnimationDuration;
         }
     }
 }
