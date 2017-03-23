@@ -35,6 +35,7 @@ namespace Popper
             Button3.TouchUpInside -= Button3TouchUpInside;
             Button4.TouchUpInside -= Button4TouchUpInside;
             Button5.TouchUpInside -= Button5TouchUpInside;
+            Button6.TouchUpInside -= Button6TouchUpInside;
         }
 
         void StyleNavbar()
@@ -53,6 +54,7 @@ namespace Popper
             Button3.TouchUpInside += Button3TouchUpInside;
             Button4.TouchUpInside += Button4TouchUpInside;
             Button5.TouchUpInside += Button5TouchUpInside;
+            Button6.TouchUpInside += Button6TouchUpInside;
         }
 
         void Button1TouchUpInside(object sender, EventArgs e)
@@ -86,6 +88,12 @@ namespace Popper
         {
             ModalViewController destination = Storyboard.InstantiateViewController("ModalViewController") as ModalViewController;
             destination.ModalTransitionStyle = UIModalTransitionStyle.PartialCurl;
+            NavigationController.PresentViewController(destination, true, null);
+        }
+
+        void Button6TouchUpInside(object sender, EventArgs e)
+        {
+            CustomTransitionViewController destination = Storyboard.InstantiateViewController("CustomTransitionViewController") as CustomTransitionViewController;
             NavigationController.PresentViewController(destination, true, null);
         }
     }

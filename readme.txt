@@ -1,6 +1,8 @@
 TODO:
 
 CAAnimation and Pop animation side by side.
+BasicAnimation peek disable when zoomed.
+Custom transitions.
 
 
 Parannuksia:

@@ -188,6 +188,12 @@
     <Compile Include="ViewControllers\BasicViewController.designer.cs">
       <DependentUpon>BasicViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\PopAnimationController.cs" />
+    <Compile Include="ViewControllers\CustomTransitionViewController.cs" />
+    <Compile Include="ViewControllers\CustomTransitionViewController.designer.cs">
+      <DependentUpon>CustomTransitionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\CustomTransitioningDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="Facebook.Pop">

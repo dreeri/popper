@@ -26,6 +26,9 @@ namespace Popper
 
 		[Outlet]
 		UIKit.UIButton Button5 { get; set; }
+
+		[Outlet]
+		UIKit.UIButton Button6 { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -52,6 +55,11 @@ namespace Popper
 			if (Button5 != null) {
 				Button5.Dispose ();
 				Button5 = null;
+			}
+
+			if (Button6 != null) {
+				Button6.Dispose ();
+				Button6 = null;
 			}
 		}
 	}
