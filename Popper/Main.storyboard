@@ -244,7 +244,7 @@
                             <constraint firstItem="Dau-i9-nIo" firstAttribute="top" secondItem="MSI-j1-PkK" secondAttribute="top" id="z1X-7Z-TD1"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Spring" image="fb" id="tF0-8K-t6x"/>
+                    <tabBarItem key="tabBarItem" title="Spring" image="square" id="tF0-8K-t6x"/>
                     <connections>
                         <outlet property="animationView" destination="rLV-Af-utl" id="eE3-rA-LUv"/>
                         <outlet property="button1" destination="2Xm-aj-7hO" id="FCe-4E-rgl"/>
@@ -507,7 +507,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="72"/>
                                 <state key="normal" title="Pop">
-                                    <color key="titleColor" red="1" green="0.43529411759999997" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="1" green="0.80000000000000004" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="um8-B1-23U">
@@ -638,7 +638,7 @@
         <image name="circle" width="22" height="22"/>
         <image name="cog" width="20" height="20"/>
         <image name="cycle" width="22" height="22"/>
-        <image name="fb" width="22" height="22"/>
         <image name="slide" width="22" height="22"/>
+        <image name="square" width="22" height="22"/>
     </resources>
 </document>

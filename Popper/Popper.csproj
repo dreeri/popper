@@ -131,6 +131,10 @@
     <ImageAsset Include="Resources\Assets.xcassets\circle.imageset\circle.png" />
     <ImageAsset Include="Resources\Assets.xcassets\circle.imageset\circle%402x.png" />
     <ImageAsset Include="Resources\Assets.xcassets\circle.imageset\circle%403x.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\square.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\square.imageset\square.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\square.imageset\square%402x.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\square.imageset\square%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -142,6 +146,7 @@
     <Folder Include="Resources\Assets.xcassets\cycle.imageset\" />
     <Folder Include="Resources\Assets.xcassets\slide.imageset\" />
     <Folder Include="Resources\Assets.xcassets\circle.imageset\" />
+    <Folder Include="Resources\Assets.xcassets\square.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
