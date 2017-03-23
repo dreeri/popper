@@ -51,7 +51,11 @@ namespace Popper
 
         void Button1TouchDown(object sender, EventArgs e)
         {
-            BoxTeaseAnimation();
+            var viewHeight = UIScreen.MainScreen.Bounds.Height;
+            if (animationView.Bounds.Size.Height < viewHeight)
+            {
+                BoxTeaseAnimation();
+            }
         }
 
         void BoxTeaseAnimation()
