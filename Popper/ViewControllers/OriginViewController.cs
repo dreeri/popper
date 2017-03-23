@@ -93,7 +93,7 @@ namespace Popper
 
         void Button6TouchUpInside(object sender, EventArgs e)
         {
-            CustomTransitionViewController destination = Storyboard.InstantiateViewController("CustomTransitionViewController") as CustomTransitionViewController;
+            PopTransitionViewController destination = Storyboard.InstantiateViewController("PopTransitionViewController") as PopTransitionViewController;
             NavigationController.PresentViewController(destination, true, null);
         }
     }

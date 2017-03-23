@@ -598,10 +598,10 @@
             </objects>
             <point key="canvasLocation" x="1452" y="-344"/>
         </scene>
-        <!--Custom Transition View Controller-->
+        <!--Pop Transition View Controller-->
         <scene sceneID="2G5-91-4Ig">
             <objects>
-                <viewController storyboardIdentifier="CustomTransitionViewController" id="3uX-2E-AaD" customClass="CustomTransitionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopTransitionViewController" id="3uX-2E-AaD" customClass="PopTransitionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sJm-te-mXm"/>
                         <viewControllerLayoutGuide type="bottom" id="0Kn-OA-ObG"/>

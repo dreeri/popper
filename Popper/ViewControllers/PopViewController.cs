@@ -90,7 +90,7 @@ namespace Popper
         {
             var animationSize = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerBounds);
             var size = new CGSize(Constants.DefaultBoxEdge, Constants.DefaultBoxEdge);
-            animationSize.ToValue = NSValue.FromCGRect(new CGRect(new CGPoint(0, 0), size));
+            animationSize.ToValue = NSValue.FromCGSize(size);
             animationSize.DynamicsMass = DynamicsMass;
             animationSize.DynamicsTension = DynamicsTension;
             animationSize.DynamicsFriction = DynamicsFriction;
@@ -98,7 +98,7 @@ namespace Popper
 
             var animation = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPosition);
             var location = CalculateBoxLocation();
-            animation.ToValue = NSValue.FromCGRect(new CGRect(location, new CGSize(0, 0)));
+            animation.ToValue = NSValue.FromCGPoint(location);
             animation.DynamicsMass = DynamicsMass;
             animation.DynamicsTension = DynamicsTension;
             animation.DynamicsFriction = DynamicsFriction;

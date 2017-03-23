@@ -1,37 +1,64 @@
 ﻿using System;
 using CoreGraphics;
+using Facebook.Pop;
+using Foundation;
 using UIKit;
 
 namespace Popper.Utilities
 {
     public class PopAnimationController : UIViewControllerAnimatedTransitioning
     {
-        public CGRect OriginFrame = CGRect.Empty;
+        float DynamicsMass;
 
-        const double Duration = 2;
+        float DynamicsTension;
 
-        public PopAnimationController()
+        float DynamicsFriction;
+
+        const double Duration = 0.400;
+
+        public PopAnimationController(float dynamicsMass, float dynamicsTension, float dynamicsFriction)
         {
+            DynamicsMass = dynamicsMass;
+            DynamicsTension = dynamicsTension;
+            DynamicsFriction = dynamicsFriction;
+        }
+
+        void DoPopSringAnimation(UIView toView, CGRect finalFrame, IUIViewControllerContextTransitioning transitionContext)
+        {
+            var animation = POPSpringAnimation.AnimationWithPropertyNamed(POPAnimation.LayerPosition);
+            var location = new CGPoint(finalFrame.X + finalFrame.Width / 2, finalFrame.Y + finalFrame.Height / 2);
+            animation.ToValue = NSValue.FromCGPoint(location);
+            animation.DynamicsMass = DynamicsMass;
+            animation.DynamicsTension = DynamicsTension;
+            animation.DynamicsFriction = DynamicsFriction;
+            animation.CompletionAction = (arg1, arg2) =>
+                {
+                    transitionContext.CompleteTransition(!transitionContext.TransitionWasCancelled);
+                };
+            toView.Layer.AddAnimation(animation, "location");
+        }
+
+        void DoUIViewAnimation(UIView toView, CGRect finalFrame, IUIViewControllerContextTransitioning transitionContext)
+        {
+            UIView.Animate(Duration, () =>
+            {
+                toView.Frame = finalFrame;
+            }, () =>
+            {
+                transitionContext.CompleteTransition(!transitionContext.TransitionWasCancelled);
+            });
         }
 
         public override void AnimateTransition(IUIViewControllerContextTransitioning transitionContext)
         {
-            var fromViewController = transitionContext.GetViewControllerForKey(UITransitionContext.FromViewControllerKey);
             var containerView = transitionContext.ContainerView;
             var toViewController = transitionContext.GetViewControllerForKey(UITransitionContext.ToViewControllerKey);
-
             var finalFrame = transitionContext.GetFinalFrameForViewController(toViewController);
 
             containerView.AddSubview(toViewController.View);
             toViewController.View.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width, finalFrame.Y, finalFrame.Width, finalFrame.Height);
 
-            UIView.Animate(Duration, () =>
-            {
-                toViewController.View.Frame = new CGRect(finalFrame.X, finalFrame.Y, finalFrame.Width, finalFrame.Height);
-            }, () =>
-            {
-                transitionContext.CompleteTransition(!transitionContext.TransitionWasCancelled);
-            });
+            DoPopSringAnimation(toViewController.View, finalFrame, transitionContext);
         }
 
         public override double TransitionDuration(IUIViewControllerContextTransitioning transitionContext)

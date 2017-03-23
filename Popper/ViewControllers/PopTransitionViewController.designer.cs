@@ -9,8 +9,8 @@ using System.CodeDom.Compiler;
 
 namespace Popper
 {
-	[Register ("CustomTransitionViewController")]
-	partial class CustomTransitionViewController
+	[Register ("PopTransitionViewController")]
+	partial class PopTransitionViewController
 	{
 		
 		void ReleaseDesignerOutlets ()
